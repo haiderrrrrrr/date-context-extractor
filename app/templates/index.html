@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Context Extractor</title>
+
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='icon.png') }}"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/wallpaper.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+  </head>
+  <body>
+    <header>
+      <div class="logo-heading-container">
+        <img
+          src="{{ url_for('static', filename='icon.png') }}"
+          alt="Icon"
+          width="40"
+        />
+        <h1>Date Context Extractor</h1>
+      </div>
+      <p>Extract dates from webpages with normalized values and surrounding context.</p>
+    </header>
+
+    <section class="container">
+      <input type="url" id="urlInput" placeholder="Enter URL to scrape" />
+      <button id="scrapeButton">Scrape</button>
+      <div class="loader" id="loader"></div>
+      <div id="scrapedData"></div>
+    </section>
+
+    <section id="downloadButtons">
+      <button id="downloadPdfButton">Download PDF</button>
+      <button id="downloadCsvButton">Download CSV</button>
+    </section>
+
+    <section id="datesList" style="display:none">
+      <h3>Extracted Dates</h3>
+      <ul id="dateList"></ul>
+    </section>
+    <div style="height: 120px;"></div>
+
+    <div class="footer">
+      <div class="bubbles"></div>
+      <div class="content">
+        <div>
+          <b>Date Context Extractor</b>
+        </div>
+        <div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
+
+
+

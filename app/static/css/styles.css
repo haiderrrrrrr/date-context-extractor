@@ -1,0 +1,403 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Header ── */
+header {
+  background-color: rgba(255, 204, 0, 0.92);
+  color: #222;
+  padding: 28px 30px 20px;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .logo-heading-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+header img {
+  width: 52px;
+  height: auto;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: #333;
+}
+
+/* ── Search container ── */
+.container {
+  background: #f9f9f9;
+  padding: 36px 40px;
+  border-radius: 14px;
+  width: 80%;
+  max-width: 820px;
+  text-align: center;
+  margin: 36px auto 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+input[type="url"] {
+  padding: 13px 16px;
+  width: 72%;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="url"]:focus {
+  border-color: #ffcc00;
+}
+
+button {
+  padding: 13px 26px;
+  font-size: 16px;
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+button:hover {
+  background-color: #e6b800;
+  transform: scale(1.04);
+}
+
+/* ── Status message ── */
+#scrapedData {
+  margin-top: 22px;
+  padding: 16px 22px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+}
+
+#scrapedData.success {
+  background-color: rgba(34, 150, 65, 0.9);
+  color: #fff;
+  border: 1px solid #1a7a34;
+}
+
+#scrapedData.error {
+  background-color: rgba(185, 50, 50, 0.9);
+  color: #fff;
+  border: 1px solid #a02020;
+}
+
+#scrapedData.loading-msg {
+  background-color: rgba(0,0,0,0.06);
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+/* ── Download buttons row ── */
+#downloadButtons {
+  display: none;
+  justify-content: center;
+  gap: 14px;
+  margin: 24px auto 0;
+  width: 80%;
+  max-width: 820px;
+}
+
+#downloadButtons button {
+  flex: 1;
+  max-width: 200px;
+  margin: 0;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #222;
+  color: #ffcc00;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+
+#downloadButtons button:hover {
+  background-color: #111;
+  transform: scale(1.04);
+}
+
+/* ── Dates list section ── */
+#datesList {
+  margin: 28px auto 0;
+  padding: 28px;
+  background-color: #f5f5f5;
+  width: 80%;
+  max-width: 820px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+#datesList h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #222;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 8px;
+}
+
+#dateList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Individual date card ── */
+#dateList li {
+  background: #fff;
+  border-left: 5px solid #ffcc00;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  transition: transform 0.15s;
+  word-break: break-word;
+}
+
+#dateList li:hover {
+  transform: translateX(3px);
+}
+
+#dateList li:last-child {
+  margin-bottom: 40px;
+}
+
+.date-entry-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.date-index {
+  font-size: 11px;
+  color: #888;
+  min-width: 28px;
+}
+
+.date-raw {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+}
+
+.date-parsed {
+  font-size: 12px;
+  color: #fff;
+  background: #333;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.date-context {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 38px;
+}
+
+.date-context mark {
+  background: #ffcc00;
+  color: #000;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* ── Loader ── */
+.loader {
+  width: 56px;
+  aspect-ratio: 1;
+  color: #ffcc00;
+  background:
+    linear-gradient(currentColor 0 0) 100% 0,
+    linear-gradient(currentColor 0 0) 0 100%;
+  background-size: 50.1% 50.1%;
+  background-repeat: no-repeat;
+  animation: l7-0 1s infinite steps(1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 999;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0 50% 50% 0;
+  background: currentColor;
+  transform: scale(var(--s, 1)) perspective(150px) rotateY(0deg);
+  transform-origin: bottom right;
+  animation: l7-1 0.5s infinite linear alternate;
+}
+
+.loader::after { --s: -1, -1; }
+
+@keyframes l7-0 {
+  0%  { transform: scaleX(1)  rotate(0deg); }
+  50% { transform: scaleX(-1) rotate(-90deg); }
+}
+
+@keyframes l7-1 {
+  49.99% { transform: scale(var(--s,1)) perspective(150px) rotateX(-90deg);  filter: grayscale(0); }
+  50%    { transform: scale(var(--s,1)) perspective(150px) rotateX(-90deg);  filter: grayscale(0.8); }
+  100%   { transform: scale(var(--s,1)) perspective(150px) rotateX(-180deg); filter: grayscale(0.8); }
+}
+
+@media (max-width: 640px) {
+  header {
+    padding: 24px 18px 20px;
+  }
+
+  header .logo-heading-container {
+    justify-content: center;
+    gap: 12px;
+    max-width: 340px;
+  }
+
+  header img {
+    width: 48px;
+    flex: 0 0 auto;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+    line-height: 1.12;
+  }
+
+  header p {
+    max-width: 340px;
+    line-height: 1.35;
+  }
+
+  .container {
+    width: calc(100% - 48px);
+    padding: 36px 28px;
+    margin-top: 36px;
+  }
+
+  input[type="url"] {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  button {
+    display: block;
+    width: min(100%, 160px);
+    margin: 16px auto 0;
+  }
+
+  #scrapedData {
+    width: 100%;
+    margin: 22px auto 0;
+    padding: 15px 18px;
+    line-height: 1.35;
+  }
+
+  #downloadButtons {
+    width: calc(100% - 48px);
+    max-width: 344px;
+    gap: 14px;
+  }
+
+  #downloadButtons button {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    padding: 13px 14px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  #datesList {
+    width: calc(100% - 48px);
+    padding: 28px 26px;
+  }
+
+  .date-entry-header {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .date-index {
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  .date-raw {
+    flex: 1 1 160px;
+    line-height: 1.35;
+  }
+
+  .date-parsed {
+    flex: 0 0 auto;
+  }
+
+  .date-context {
+    padding-left: 38px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 380px) {
+  .container,
+  #downloadButtons,
+  #datesList {
+    width: calc(100% - 32px);
+  }
+
+  .container {
+    padding: 32px 20px;
+  }
+
+  #datesList {
+    padding: 24px 18px;
+  }
+
+  #downloadButtons {
+    flex-direction: column;
+  }
+
+  #downloadButtons button {
+    width: 100%;
+  }
+
+  .date-context {
+    padding-left: 0;
+  }
+}
